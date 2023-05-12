@@ -23,7 +23,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
     getKategoriBarang();
   }
 
-  void getKategoriBarang() async{
+  void getKategoriBarang() async {
     final kategoriBarang = await kategoriBarangController.getKategoriBarang();
     setState(() {
       listKategoriBarang = kategoriBarang;
@@ -32,28 +32,41 @@ class _KategoriBarangState extends State<KategoriBarang> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Kategori Barang'),
+      appBar: AppBar(
+        title: const Text('Kategori Barang'),
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: listKategoriBarang.length,
-          itemBuilder: (context, index){
-            return Card(
-              child: ListTile(title: Text(listKategoriBarang[index].nama),
-              trailing: IconButton(onPressed: () {},
-              icon: const Icon(Icons.edit)),),
-            );
-          },
-          )),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddKategoriBarang()));
-          },
-          child: const Icon(Icons.add),
-          ),
+          child: ListView.builder(
+        itemCount: listKategoriBarang.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              title: Text(listKategoriBarang[index].nama),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.delete),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.edit),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddKategoriBarang()));
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
