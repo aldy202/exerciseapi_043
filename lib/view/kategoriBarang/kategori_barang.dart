@@ -30,6 +30,8 @@ class _KategoriBarangState extends State<KategoriBarang> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,15 @@ class _KategoriBarangState extends State<KategoriBarang> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      kategoriBarangController
+                        .deleteKategoriBarang(listKategoriBarang[index].id)
+                        .then((value){
+                          listKategoriBarang.removeAt(index);
+
+                        });
+                      
+                    },
                     icon: const Icon(Icons.delete),
                   ),
                   IconButton(
