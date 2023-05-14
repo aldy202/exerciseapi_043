@@ -20,7 +20,7 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
   
 
   void addKategoriBarang() async{
-    KategoriBarangModel kategoriBarang = KategoriBarangModel( id: id!, nama: nama! );
+    KategoriBarangModel kategoriBarang = KategoriBarangModel(nama: nama! );
     await kategoriBarangController.addkategoriBarang(kategoriBarang);
   }
 
