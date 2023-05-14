@@ -7,7 +7,7 @@ import 'package:materiapi_2/model/kategori_barang_model.dart';
 import 'kategori_barang.dart';
 
 class AddKategoriBarang extends StatefulWidget {
-  const AddKategoriBarang({super.key});
+  const AddKategoriBarang({Key? key}) : super(key: key);
 
   @override
   State<AddKategoriBarang> createState() => _AddKategoriBarangState();
@@ -15,10 +15,12 @@ class AddKategoriBarang extends StatefulWidget {
 
 class _AddKategoriBarangState extends State<AddKategoriBarang> {
   final kategoriBarangController = BarangController();
+  int? id;
   String? nama;
+  
 
   void addKategoriBarang() async{
-    KategoriBarangModel kategoriBarang = KategoriBarangModel(nama: nama!);
+    KategoriBarangModel kategoriBarang = KategoriBarangModel( id: id!, nama: nama! );
     await kategoriBarangController.addkategoriBarang(kategoriBarang);
   }
 
